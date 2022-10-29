@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { formatWithOptions } from 'util';
+import * as React from 'react'; 
 import './bootstrap.css';
 import './style.css'; 
+import { utility } from './utility/utility';
 
 const Ctx = React.createContext(null);
 const Reducer = (state,{type,payload})=>{
@@ -10,7 +10,15 @@ const Reducer = (state,{type,payload})=>{
       state.list = Object.values(payload)};
       state.list.forEach(e=>{
         e.absolute_type = e.type.split('/')[0];
-        e.url = window.URL.createObjectURL(new Blob([e])); 
+        e.url = window.URL.createObjectURL(new Blob([e]));
+        switch(e.absolute_type){
+          case 'image':{
+            e.preview_url = e.url;
+          }break;
+          case 'video':{
+            e.preview_url = utility.parser.video(e);
+          }
+        }
       })
     }
   return {...state};
@@ -38,7 +46,7 @@ function List(){
         case 'image': container = <img className='img' src={preview.url}/>
       }
       return (<div className='prev'>
-              <button className='pin btn-danger' onClick={e=>setPreview(null)}></button>
+       <button className='pin btn-danger' onClick={e=>setPreview(null)}></button>
        {container}
     </div>)}
   ,[preview]);
@@ -46,7 +54,9 @@ function List(){
   (
     <div className='gallery-container'>
       <ol className='img-gallery'>
-        {list.map(e=><li className='stretch' onClick={()=>{ setPreview(e) }}><img src={e.url}/></li>)}
+        {list.map(e=><li className='stretch' onClick={()=>{ setPreview(e) }}>
+          <img src={e.preview_url}/>
+          </li>)}
       </ol>
     </div>
   ),[list]);
@@ -71,6 +81,6 @@ function Fileimporter(){
   }
 
   return (<div>
-   <input className='mt-5 form-control' type='file' accept='video/*,image/*' multiple={true} onChange={e=>importx(e)}/>
+   <input placeholder='upload' className='mt-5 form-control' type='file' accept='video/*,image/*' multiple={true} onChange={e=>importx(e)}/>
   </div>)
 }
