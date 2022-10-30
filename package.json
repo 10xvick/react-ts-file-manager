@@ -3,13 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "@ffmpeg/ffmpeg": "^0.11.6",
     "@types/node": "^18.11.7",
     "@types/react": "^18.0.8",
     "@types/react-dom": "^18.0.2",
     "bootstrap-icons": "^1.9.1",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "vlc-player": "^2.0.0"
+    "react-dom": "^18.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

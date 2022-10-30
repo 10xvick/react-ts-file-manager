@@ -4,19 +4,22 @@ import './style.css';
 import { utility } from './utility/utility';
 
 const Ctx = React.createContext(null);
-const Reducer = (state,{type,payload})=>{
+const Reducer = (state,{type,payload:{data,dispatch}})=>{
   switch (type) {
-    case 'setlist':{ 
-      state.list = Object.values(payload)};
-      state.list.forEach(e=>{
+    case 'setlist':{
+      state.list = Object.values(data)};
+      state.list.forEach((e,i)=>{
         e.absolute_type = e.type.split('/')[0];
         e.url = window.URL.createObjectURL(new Blob([e]));
         switch(e.absolute_type){
           case 'image':{
             e.preview_url = e.url;
-          }break;
+          } break;
           case 'video':{
-            e.preview_url = utility.parser.video(e);
+            utility.parser.video(e).then(f=>{ 
+              e.target.files[i]=f;
+              dispatch( {type:'setlist',payload:{data:e.target.files,dispatch:dispatch}} );
+            })
           }
         }
       })
@@ -77,7 +80,7 @@ function Menu(){
 function Fileimporter(){ 
   const dispatch = React.useContext(Ctx).dispatch;
   function importx(e){ 
-    dispatch( {type:'setlist',payload:e.target.files} );
+    dispatch( {type:'setlist',payload:{data:e.target.files,dispatch:dispatch}} );
   }
 
   return (<div>
