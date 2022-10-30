@@ -57,7 +57,7 @@ function List(){
   (
     <div className='gallery-container'>
       <ol className='img-gallery'>
-        {list.map(e=><li className='stretch' onClick={()=>{ setPreview(e) }}>
+        {list.map(e=><li key={e.url} className='stretch' onClick={()=>{ setPreview(e) }}>
           <img src={e.preview_url}/>
           </li>)}
       </ol>
