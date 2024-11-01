@@ -52,34 +52,23 @@
   /* grid-template-columns: repeat(auto-fill, var(--img-size)); */
 }
 
-.img-gallery > div {
-  /* height: var(--img-size); */
-  /* overflow: hidden; */
-  /* background: rgba(255, 254, 254, 0.747); */
-  width: var(--gridscale);
-  height: var(--gridscale);
-}
-
 .stretch {
   display: flex;
   flex-direction: column;
 }
 
 .thumbnail {
+  width: var(--gridscale);
+  height: var(--gridscale);
   position: relative;
-  display: inline-block;
-  > video {
-    /* transform: scale(0.8) skewX(10deg); */
-  }
+  display: inline-flex;
 }
 
 .thumbnail > img,
 video {
   object-fit: cover;
-  height: 95%;
   width: 95%;
   background-color: antiquewhite;
-  display: block;
 }
 
 .thumbnail > svg {

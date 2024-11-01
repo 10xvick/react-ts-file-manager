@@ -62,6 +62,7 @@ export default function GalleryUI() {
 }
 
 const ThumbnailUI = ({ file }) => {
+  console.log(file)
   return (
     <>
       {file.absolute_type == 'video' ? (
