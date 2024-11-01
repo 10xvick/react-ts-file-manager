@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { Ctx } from '../state/reducer';
+import { utility } from '../utility/utility';
+import { gridscale_ } from '../constants/stored_variables';
+
+const setgridscale = utility.optimizer.create_throttle(1000, gridscale_.set);
 
 export function GridScaller() {
   const [min, setmin] = useState<string>('20');
@@ -27,7 +31,7 @@ export function GridScaller() {
           onChange={(e) =>
             dispatch({
               type: 'setgridscale',
-              payload: { data: e.target.value },
+              payload: { data: e.target.value, fn: setgridscale },
             })
           }
         />

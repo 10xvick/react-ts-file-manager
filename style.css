@@ -2,8 +2,13 @@
   background: black;
   font-family: Arial, sans-serif;
   --img-size: calc(100vw / 5);
-  --z-index-menu:2;
-  --z-index-navigatie-btn:3;
+  --z-index-menu: 2;
+  --z-index-navigatie-btn: 3;
+
+  *:not(input) {
+    color: white;
+    font-size: small;
+  }
 }
 
 .pin {
@@ -62,6 +67,9 @@
 
 .thumbnail {
   display: inline-block;
+  > video {
+    transform: scale(0.8) skewX(10deg);
+  }
 }
 
 .thumbnail > img,

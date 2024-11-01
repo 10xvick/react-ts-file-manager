@@ -2,7 +2,7 @@ import * as React from 'react';
 import './bootstrap.css';
 import './style.css';
 import { Ctx, initialData, Reducer } from './state/reducer';
-import MediaListUI from './modules/medialist';
+import GalleryUI from './modules/galleryUI';
 import MenuUI from './modules/menu';
 
 export default function App() {
@@ -12,7 +12,7 @@ export default function App() {
     <div>
       <Ctx.Provider value={{ data: data, dispatch: dispatch }}>
         <MenuUI />
-        <MediaListUI />
+        <GalleryUI />
       </Ctx.Provider>
     </div>
   );

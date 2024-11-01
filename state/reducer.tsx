@@ -2,7 +2,7 @@ import React from 'react';
 import { utility } from '../utility/utility';
 import { gridscale_ } from '../constants/stored_variables';
 
-export const Reducer = (state, { type, payload: { data, dispatch } }) => {
+export const Reducer = (state, { type, payload: { data, dispatch, fn } }) => {
   switch (type) {
     case 'setlist': {
       state.list = Object.values(data);
@@ -31,8 +31,8 @@ export const Reducer = (state, { type, payload: { data, dispatch } }) => {
       break;
     }
     case 'setgridscale': {
-      console.log(data);
       state.config.grid.scale = data;
+      fn(Number(data));
     }
   }
   return { ...state };

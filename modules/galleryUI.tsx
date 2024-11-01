@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { Ctx } from '../state/reducer';
+// import { PiPlayCircle } from 'react-icons/pi';
 
-export default function MediaListUI() {
+export default function GalleryUI() {
   const list = React.useContext(Ctx).data.list;
   const [preview, setPreview] = React.useState(null!);
 
@@ -37,7 +38,10 @@ export default function MediaListUI() {
     const gridscale = React.useContext(Ctx).data.config.grid.scale;
 
     return (
-      <div className="gallery-container" style={{ '--gridscale': gridscale + 'px' }}>
+      <div
+        className="gallery-container"
+        style={{ '--gridscale': gridscale + 'px' }}
+      >
         <div className="img-gallery">
           {list.map((e) => (
             <div
@@ -61,7 +65,10 @@ const ThumbnailUI = ({ file }) => {
   return (
     <>
       {file.absolute_type == 'video' ? (
-        <video src={file.url} preload={file.metadata} />
+        <>
+          <video src={file.url} preload={file.metadata} />
+          {/* <PiPlayCircle /> */}
+        </>
       ) : (
         <img src={file.url} />
       )}
