@@ -17,7 +17,7 @@
 
 /* settings */
 .menu {
-  background-color: rgba(0, 0, 0, 0.61);
+  background-color: rgba(0, 0, 0, 0.71);
   z-index: var(--z-index-menu);
 }
 

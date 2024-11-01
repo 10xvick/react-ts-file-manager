@@ -1,1 +1,2 @@
-fix event bubling
+add play icon on video blocks to differentiate from images
+

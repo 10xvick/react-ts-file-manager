@@ -9,29 +9,36 @@ export function GridScaller() {
 
   return (
     <div>
-      <input
-        type="number"
-        value={min}
-        min={0}
-        max={max}
-        onChange={(e) => setmin(e.target.value)}
-      />
-      <input
-        type="range"
-        min={min}
-        max={max}
-        value={scale}
-        onChange={(e) =>
-          dispatch({ type: 'setgridscale', payload: { data: e.target.value } })
-        }
-      />
-      {scale}
-      <input
-        type="number"
-        value={max}
-        min={min}
-        onChange={(e) => setmax(e.target.value)}
-      />
+      grid-scale:{scale}
+      <div className="d-flex justify-conetent-space-between">
+        <input
+          type="number"
+          value={min}
+          min={0}
+          max={max}
+          onChange={(e) => setmin(e.target.value)}
+        />
+        <input
+          className="w-100"
+          type="range"
+          min={min}
+          max={max}
+          value={scale}
+          onChange={(e) =>
+            dispatch({
+              type: 'setgridscale',
+              payload: { data: e.target.value },
+            })
+          }
+        />
+        <input
+          type="number"
+          value={max}
+          min={min}
+          max={document.body.clientWidth}
+          onChange={(e) => setmax(e.target.value)}
+        />
+      </div>
     </div>
   );
 }

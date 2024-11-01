@@ -1,5 +1,6 @@
 import React from 'react';
 import { utility } from '../utility/utility';
+import { gridscale_ } from '../constants/stored_variables';
 
 export const Reducer = (state, { type, payload: { data, dispatch } }) => {
   switch (type) {
@@ -40,7 +41,7 @@ export const Reducer = (state, { type, payload: { data, dispatch } }) => {
 export const Ctx = React.createContext(null);
 export const initialData = {
   list: [] || Array(100).fill(createFakeFile('file' + Math.random(), 'video')),
-  config: { grid: { scale: 1 } },
+  config: { grid: { scale: Number(gridscale_.get()) } },
 };
 
 function createFakeFile(filename, filetype) {
