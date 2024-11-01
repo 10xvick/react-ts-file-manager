@@ -2,20 +2,23 @@
   background: black;
   font-family: Arial, sans-serif;
   --img-size: calc(100vw / 5);
+  --z-index-menu:2;
+  --z-index-navigatie-btn:3;
 }
 
 .pin {
   margin: 1rem;
   border-radius: 50%;
   position: fixed;
-  z-index: 1;
   width: 1rem;
   height: 1rem;
+  z-index: var(--z-index-navigatie-btn);
 }
 
 /* settings */
 .menu {
   background-color: rgba(0, 0, 0, 0.61);
+  z-index: var(--z-index-menu);
 }
 
 /* preview */
