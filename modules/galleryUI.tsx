@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Ctx } from '../state/reducer';
+import { PiPlayCircle } from 'react-icons/pi';
 
 export default function GalleryUI() {
   const list = React.useContext(Ctx).data.list;
@@ -66,7 +67,7 @@ const ThumbnailUI = ({ file }) => {
       {file.absolute_type == 'video' ? (
         <>
           <video src={file.url} preload={file.metadata} />
-          {/* <PiPlayCircle /> */}
+          <PiPlayCircle />
         </>
       ) : (
         <img src={file.url} />
