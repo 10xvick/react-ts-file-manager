@@ -14,7 +14,6 @@ export default function GalleryUI() {
           <video
             poster={preview.url}
             controls
-            allow-fullscreen
             className="vid"
             src={preview.url}
           />
@@ -62,7 +61,6 @@ export default function GalleryUI() {
 }
 
 const ThumbnailUI = ({ file }) => {
-  console.log(file)
   return (
     <>
       {file.absolute_type == 'video' ? (
